@@ -26,9 +26,6 @@ async function read(folder){
 http.createServer((req, res) => {
     arr = []
     res.setHeader('Content-Type', 'application/json')
-    res.writeHead(200, {
-        'Content-Type': 'text/plain'
-    })
     let folder = process.cwd() + req.url
     console.log(">< folder", folder)
     async() => {
