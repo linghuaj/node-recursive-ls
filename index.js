@@ -15,8 +15,6 @@ async function read(folder){
     }
     let process = []
     let files = await fs.promise.readdir(folder)
-        // console.log("><files", files)
-
     for (let item of files) {
         process.push(read(folder + '/' + item))
     }
