@@ -1,15 +1,20 @@
+/**
+ * Node recursively ls all files at leaf node
+ * @type {[type]}
+ */
 let http = require('http')
 let fs = require('fs')
 let arr = []
 
 require('songbird')
 
+//TODO handle file not exist case
+//TODO add bonus
 
 async function read(folder){
     let stat = await fs.promise.stat(folder)
 
     if (!stat.isDirectory()) {
-        // console.log(">< folder", folder)
         arr.push(folder)
         return
     }
@@ -18,7 +23,8 @@ async function read(folder){
     for (let item of files) {
         process.push(read(folder + '/' + item))
     }
-    let results = await Promise.all(process)
+    // let results =
+    await Promise.all(process)
     // return results automatci returned
 }
 
@@ -26,6 +32,9 @@ async function read(folder){
 http.createServer((req, res) => {
     arr = []
     res.setHeader('Content-Type', 'application/json')
+    res.writeHead(200, {
+        'Content-Type': 'text/plain'
+    })
     let folder = process.cwd() + req.url
     console.log(">< folder", folder)
     async() => {
