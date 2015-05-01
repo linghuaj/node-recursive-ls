@@ -4,26 +4,6 @@ let arr = []
 
 require('songbird')
 
-http.createServer((req, res) => {
-    arr = []
-    res.setHeader('Content-Type', 'application/json')
-    res.writeHead(200, {
-        'Content-Type': 'text/plain'
-    })
-    let folder = process.cwd() + req.url
-    console.log(">< folder", folder)
-    async() => {
-        res.end(JSON.stringify(await read(folder)))
-    }()
-    //another way to call
-    // read(folder).then(() => {
-    //    res.end(JSON.stringify(arr))
-    // })
-}).listen(8000, '127.0.0.1')
-console.log('Server running at http://127.0.0.1:8000/')
-
-
-
 
 async function read(folder){
     let stat = await fs.promise.stat(folder)
@@ -43,6 +23,30 @@ async function read(folder){
     let results = await Promise.all(process)
     // return results automatci returned
 }
+
+
+http.createServer((req, res) => {
+    arr = []
+    res.setHeader('Content-Type', 'application/json')
+    res.writeHead(200, {
+        'Content-Type': 'text/plain'
+    })
+    let folder = process.cwd() + req.url
+    console.log(">< folder", folder)
+    async() => {
+        await read(folder)
+        res.end(JSON.stringify(arr))
+    }()
+    //another way to call
+    // read(folder).then(() => {
+    //    res.end(JSON.stringify(arr))
+    // })
+}).listen(8000, '127.0.0.1')
+console.log('Server running at http://127.0.0.1:8000/')
+
+
+
+
 
 
 
