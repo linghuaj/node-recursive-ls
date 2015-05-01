@@ -1,5 +1,8 @@
 let http = require('http')
 let _ = require('lodash')
+let fs = require('fs')
+
+require('songbird')
 
 http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': 'text/plain'})
