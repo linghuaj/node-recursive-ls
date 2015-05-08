@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node -- --stage 1 --optional strict -- index.js"
   },
-  "author": "",
+  "author": "Linghua Jin",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanessachem/node-recursive-ls/issues"
+  },
   "dependencies": {
     "lodash": "^3.7.0",
-    "songbird": "^1.0.1"
+    "songbird": "^1.0.1",
+    "yargs": "^3.8.0"
   }
 }
