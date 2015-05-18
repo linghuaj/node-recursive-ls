@@ -22,3 +22,6 @@ async function(items) {
 * Given a list of subdirectories, fs.stat calls for each of the subdirectories run in parallel
 * Given a list of subdirectories, fs.readdir should wait only for its one corresponding fs.stat:
 * Recursive ls calls for subdirectories should run in parallel
+* 
+##todo:
+better error handling.
